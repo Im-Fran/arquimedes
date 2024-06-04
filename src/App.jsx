@@ -15,7 +15,7 @@ const App = () => <>
                 </button>
             </div>
         </nav>
-        <div className={"border border-b border-[6px] border-black w-full my-2.5"}></div>
+        <div className={"border-b border-[6px] border-black w-full my-2.5"}></div>
     </div>
     <div className={"container mx-auto min-h-screen"}>
         <div className={"flex justify-center my-5"}>
