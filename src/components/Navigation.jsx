@@ -7,7 +7,7 @@ const Navigation = () => <div>
         />
 
         <div>
-            <button className={"bg-[#07b7ae] uppercase text-zinc-100 px-5 py-3 rounded-lg"}>
+            <button className={"bg-teal-600 border-2 border-teal-600 hover:bg-transparent uppercase text-zinc-100 hover:text-teal-600 px-5 py-3 rounded-lg transition duration-300 font-semibold"}>
                 Reservar Hora
             </button>
         </div>
