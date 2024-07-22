@@ -1,21 +1,21 @@
-import Navigation from "../components/Navigation.jsx";
-import BotonTarjeta from "../components/MainView/BotonTarjeta.jsx";
+import Navigation from "../components/Navigation";
+import BotonTarjeta from "../components/MainView/BotonTarjeta";
+import Banner from "../components/MainView/Banner";
 
-const botones = ['transporte', 'especialidades', 'medicamentos', 'informacion']
+const botones = [
+    { key: 'vacunacion', nombre: 'Vacunación', imagen: 'vacuna'},
+    { key: 'servicios_medicos', nombre: 'Servicios Médicos', imagen: 'corazon'},
+    { key: 'horario_de_atencion', nombre: 'Hora de Atención', imagen: 'calendario'},
+    { key: 'reservar_hora', nombre: 'Reservar Hora', imagen: 'reloj'}
+]
 
 const MainView = () => <>
     <Navigation/>
     <div className={"container mx-auto min-h-screen"}>
-        <div className={"flex justify-center my-5"}>
-            <img
-                src={"/banner.webp"}
-                alt={"Persona entregando medicamentos"}
-                className={"w-3/4 md:w-2/3 h-80 md:h-96 object-cover object-center rounded-2xl shadow-lg"}
-            />
-        </div>
+        <Banner/>
 
         <div className={"grid grid-cols-2 md:grid-cols-4 gap-5 mx-5 md:mx-0"}>
-            {botones.map(boton => (<BotonTarjeta key={boton} nombre={boton}/>))}
+            {botones.map(boton => (<BotonTarjeta key={boton.key} {...boton}/>))}
         </div>
     </div>
 </>
