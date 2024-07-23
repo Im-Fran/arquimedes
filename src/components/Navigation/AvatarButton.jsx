@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import md5 from 'crypto-js/md5';
+import sha256 from 'crypto-js/sha256';
 import {shape, string} from "prop-types";
 
 const AvatarButton = ({ user }) => {
@@ -34,7 +34,7 @@ const AvatarButton = ({ user }) => {
         <div className={"relative flex items-center"}>
             <div className={"relative flex items-center bg-neutral-400 rounded-full pr-2"} onClick={toggleDropdown}>
                 <img
-                    src={`https://www.gravatar.com/avatar/${md5(user.correo)}?d=identicon`}
+                    src={`https://www.gravatar.com/avatar/${sha256(user.correo.trim().toLowerCase())}.webp?s=512&d=mp`}
                     alt={`Imagen de ${user.nombre}`}
                     className={"w-10 h-10 rounded-full"}
                 />
