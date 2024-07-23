@@ -11,6 +11,7 @@ const AvatarButton = ({ user }) => {
 
     const logout = () => {
         localStorage.setItem('user', null);
+        localStorage.setItem('reservas', null);
         window.location.reload();
     };
 
@@ -33,12 +34,17 @@ const AvatarButton = ({ user }) => {
     return (
         <div className={"relative flex items-center"}>
             <div className={"relative flex items-center bg-neutral-400 rounded-full pr-2"} onClick={toggleDropdown}>
-                <img
-                    src={`https://www.gravatar.com/avatar/${sha256(user.correo.trim().toLowerCase())}.webp?s=512&d=mp`}
-                    alt={`Imagen de ${user.nombre}`}
-                    className={"w-10 h-10 rounded-full"}
-                />
-                <svg xmlns={"http://www.w3.org/2000/svg"} className={"h-6 w-6 text-neutral-100 fill-none"} viewBox={"0 0 24 24"} stroke={"currentColor"}>
+                <object
+                    data={`https://www.gravatar.com/avatar/${sha256(user.correo.trim().toLowerCase())}.webp?s=512&d=mp`}
+                    type="image/webp" className={"w-10 h-10 rounded-full"} aria-label={`Avatar de ${user.nombre}`}>
+                    <img
+                        src={"/avatar.webp"}
+                        alt={`Avatar de ${user.nombre}`}
+                        className={"w-10 h-10 rounded-full"}
+                    />
+                </object>
+                <svg xmlns={"http://www.w3.org/2000/svg"} className={"h-6 w-6 text-neutral-100 fill-none"}
+                     viewBox={"0 0 24 24"} stroke={"currentColor"}>
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -52,7 +58,7 @@ const AvatarButton = ({ user }) => {
                 <div className={"border border-b"}/>
                 <Link to="/reserva-hora" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg">Reserva Hora</Link>
                 <Link to="/hora-de-atencion" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Hora de Atención</Link>
-                <Link to="/vacunacion" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vacunación</Link>
+                {/*<Link to="/vacunacion" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vacunación</Link>*/}
                 <Link to="/servicios-medicos" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Servicios Médicos</Link>
                 <button onClick={logout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg">Cerrar Sesión</button>
             </div>}

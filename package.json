@@ -1,7 +1,7 @@
 {
   "name": "arquimedes",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "crypto-js": "^4.2.0",
     "postcss-selector-parser": "^6.1.0",
     "prop-types": "^15.8.1",
