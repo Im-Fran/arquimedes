@@ -1,12 +1,12 @@
 import Navigation from "../components/Navigation";
 import BotonTarjeta from "../components/MainView/BotonTarjeta";
-import Banner from "../components/MainView/Banner";
+import Banner from "../components/MainView/Banner.jsx";
 
 const botones = [
-    { key: 'vacunacion', nombre: 'Vacunación', imagen: 'vacuna'},
-    { key: 'servicios_medicos', nombre: 'Servicios Médicos', imagen: 'corazon'},
-    { key: 'horario_de_atencion', nombre: 'Hora de Atención', imagen: 'calendario'},
-    { key: 'reservar_hora', nombre: 'Reservar Hora', imagen: 'reloj'}
+    { nombre: 'Reservar Hora', imagen: 'reloj', link: 'reservar-hora'},
+    { nombre: 'Hora de Atención', imagen: 'calendario', link: 'horario-atencion'},
+    { nombre: 'Vacunación', imagen: 'vacuna', link: 'vacunacion'},
+    { nombre: 'Servicios Médicos', imagen: 'corazon', link: 'servicios-medicos'}
 ]
 
 const MainView = () => <>
@@ -15,7 +15,7 @@ const MainView = () => <>
         <Banner/>
 
         <div className={"grid grid-cols-2 md:grid-cols-4 gap-5 mx-5 md:mx-0"}>
-            {botones.map(boton => (<BotonTarjeta key={boton.key} {...boton}/>))}
+            {botones.map((boton, idx) => (<BotonTarjeta key={idx} {...boton}/>))}
         </div>
     </div>
 </>

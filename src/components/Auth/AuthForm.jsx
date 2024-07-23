@@ -37,14 +37,17 @@ const AuthForm = () => {
     const onSubmit = () => {
         const run = document.getElementById('run').value
         const nombre = document.getElementById('nombre').value
-        // const clave = document.getElementById('clave').value
+        const correo = document.getElementById('correo').value
         if (!validateRUT(run)) {
             alert('R.U.N inválido. Por favor ingrese un R.U.N válido.')
             return
         }
 
-        localStorage.setItem("nombre", nombre)
-        localStorage.setItem("run", run)
+        localStorage.setItem("user", JSON.stringify({
+            run,
+            nombre,
+            correo
+        }))
 
         setAuthenticated(() => true)
     }
@@ -57,7 +60,18 @@ const AuthForm = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="nombre"
                 type="text"
-                placeholder="Sophia Lira"
+                placeholder="Francisco Solis"
+                autoComplete={"name"}
+            />
+        </div>
+        <div className="mb-4">
+            <label className="block text-black text-sm font-bold mb-2" htmlFor="correo">Correo</label>
+            <input
+                className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                id={"correo"}
+                type={"email"}
+                placeholder={"correo@dominio.cl"}
+                autoComplete={"email"}
             />
         </div>
         <div className="mb-4">
@@ -66,19 +80,20 @@ const AuthForm = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="run"
                 type="text"
-                placeholder="21.502.084-3"
+                placeholder="21.342.119-0"
                 pattern={"^(\\d{1,2}(?:[\\.]?\\d{3}){2}-[\\dkK])$"}
+                autoComplete={"off"}
             />
         </div>
-        <div className="mb-6">
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="clave">Clave</label>
-            <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="clave"
-                type="password"
-                placeholder="•••••••••"
-            />
-        </div>
+        {/*<div className="mb-6">*/}
+        {/*    <label className="block text-black text-sm font-bold mb-2" htmlFor="clave">Clave</label>*/}
+        {/*    <input*/}
+        {/*        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"*/}
+        {/*        id="clave"*/}
+        {/*        type="password"*/}
+        {/*        placeholder="•••••••••"*/}
+        {/*    />*/}
+        {/*</div>*/}
         <div className="flex items-center justify-between">
             <button className="bg-teal-600 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                 Acceder
